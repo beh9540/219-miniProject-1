@@ -24,7 +24,11 @@ public class Player implements ActionListener{
 			game.unselectPosition(position[0],position[1]);
 		} else if(selected != null && game.validMove(selected[0],selected[1],position[0],position[1],whosTurn)) {
 			game.move(selected[0],selected[1],position[0],position[1],whosTurn);
-			whosTurn = BLACK;
+			if (whosTurn == BLACK)
+				whosTurn = WHITE;
+			else 
+				whosTurn = BLACK;
+			selected = null;
 		}
 	}
 }

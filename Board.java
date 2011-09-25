@@ -10,6 +10,8 @@ public class Board extends JPanel{
 	private Game game;
 	
 	public Board(){
+		Game game = new Game();
+		Player player = new Player(game);
 		board = new JButton[NUM_POSITIONS][NUM_POSITIONS];
 		setLayout(new GridLayout(NUM_POSITIONS,NUM_POSITIONS));
 		for (int i = 0; i < NUM_POSITIONS; i++){
@@ -24,8 +26,7 @@ public class Board extends JPanel{
 				add(board[i][j]);
 			}
 		}	
-		Game game = new Game();
-		Player player = new Player(game);
+		game.startGame();
 	}
 	/**
 	 * Draws a piece on the board
