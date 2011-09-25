@@ -1,27 +1,52 @@
+import javax.swing.*;
 /**
 Class for implementing moves, storing Game at points in along the playing scheme, etc
 */
 public class Game {
-	private Piece[][] board;
+	private int[][] positions;
 	/**
 	Sets up the start of a new game
 	*/
 	public Game(){
-		board = new Piece[Board.NUM_POSITIONS-1][Board.NUM_POSITIONS-1];
-		for (int i=0; i < Board.NUM_POSITIONS; i++) {
-			board[i,0] = new Piece(Player.BLACK,i,0);
-			board[i,1] = new Piece(Player.BLACK,i,1);
-			board[i,Board.NUM_POSITIONS-1] = new Piece(Player.WHITE,i,Board.NUM_POSITIONS-1);
-			board[i,Board.NUM_POSITIONS-2] = new Piece(Player.WHITE,i,Board.NUM_POSITIONS-2)
-		}
+		positions = new int[Board.NUM_POSITIONS][Board.NUM_POSITIONS];
+		resetBoard();
 	}
-	/**
-	 * Checks to see if a player can move to a spot
-	 * @parameter1 the piece to be moved
-	 * @parameter2 row on the board of the move
-	 * @parameter3 col on the board of the move
-	 */
-	public boolean canMove(Piece player,int r, int c, int color){
-		
+	
+	public int positionColor(int r, int c){
+		return Player.WHITE;
+	}
+	
+	public void move(int from_r,int from_c, int to_r, int to_c,int color){
+		Board.removePiece(from_r,from_c);
+		Board.drawPiece(to_r,to_c,color);
+	}
+	
+	public void selectPosition(int r, int c){
+	
+	}
+	
+	public void unselectPosition(int r, int c){
+	
+	}
+	
+	public boolean validMove(int from_r,int from_c,int to_r, int to_c,int color){
+		return true;
+	}
+	
+	public int [] getPosition(JButton jb) {
+		return Board.getPosition(jb);
+	}
+	
+	private void resetBoard() {
+		for (int i=0; i < Board.NUM_POSITIONS; i++) {
+			positions[i][0] = Player.BLACK;
+			Board.drawPiece(i,0,Player.BLACK);
+			positions[i][1] = Player.BLACK;
+			Board.drawPiece(i,1,Player.BLACK);
+			positions[i][Board.NUM_POSITIONS-1] = Player.WHITE;
+			Board.drawPiece(i,Board.NUM_POSITIONS-1,Player.WHITE);
+			positions[i][Board.NUM_POSITIONS-2] = Player.WHITE;
+			Board.drawPiece(i,Board.NUM_POSITIONS-2,Player.WHITE);
+		}
 	}
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Sep 24, 2011 3:13:45 PM                                                        
+
+     project    
+     description
+                   
+     dblab                                                                
+     ====================================================================== -->
+<project name="BreakThrough" default="default">
+	<property name="src" location="."/>
+	<property name="build" location="build"/>
+		
+    <description>
+            A Breakthrough game
+    </description>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="compile" description="description">
+        
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="compile" depends="init">
+    	<javac srcdir="${src}" destdir="${build}"/>
+    </target>
+    	
+    <target name="init">
+    	<tstamp/>
+    	<mkdir dir="build"/>
+   	</target>
+
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+</project>
